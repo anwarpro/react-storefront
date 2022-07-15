@@ -33,10 +33,10 @@ export function OrdersTable({ orders }: OrdersTableProps) {
             key={order.id}
             onClick={() => router.push(paths.account.orders._token(order.token).$url())}
           >
-            <td>{order?.number}</td>
-            <td>{order.created.slice(0, 10)}</td>
-            <td className="hidden md:table-cell">{order.status}</td>
-            <td>{formatPrice(order.total.gross)}</td>
+            <td className="text-2xl">{order?.number}</td>
+            <td className="text-2xl">{order.created.slice(0, 10)}</td>
+            <td className="hidden md:table-cell text-sm font-medium">{order.status}</td>
+            <td className="text-2xl">{formatPrice(order.total.gross)}</td>
           </tr>
         ))}
       </tbody>

@@ -4,7 +4,6 @@ import { useCheckout } from "@/lib/providers/CheckoutProvider";
 import { CheckoutDetailsFragment } from "@/saleor/api";
 
 import { BillingAddressSection } from "./BillingAddressSection";
-import { EmailSection } from "./EmailSection";
 import { PaymentSection } from "./payments/PaymentSection";
 import { ShippingAddressSection } from "./ShippingAddressSection";
 import { ShippingMethodSection } from "./ShippingMethodSection";
@@ -55,9 +54,9 @@ export function CheckoutForm() {
 
   return (
     <section className="flex flex-auto flex-col overflow-y-auto px-4 pt-4 space-y-4 pb-4">
-      <div className="checkout-section-container">
+      {/* <div className="checkout-section-container">
         <EmailSection checkout={checkout} />
-      </div>
+      </div> */}
       <div className="checkout-section-container">
         <BillingAddressSection active={!collapsedSections.billingAddress} checkout={checkout} />
       </div>

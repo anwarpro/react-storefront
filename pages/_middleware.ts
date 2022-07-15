@@ -35,6 +35,8 @@ export function LocaleRedirectionMiddleware({
     channel = "channel-pln";
   }
 
+  // If corporate channel redirect to login page
+
   const url = nextUrl.clone();
   url.pathname = `/${channel}/${locale}`;
   return NextResponse.redirect(url);

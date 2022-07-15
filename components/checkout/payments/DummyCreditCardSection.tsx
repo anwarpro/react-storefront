@@ -50,6 +50,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
       }
     : {};
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { register: registerCard, handleSubmit: handleSubmitCard } = useForm<CardForm>({
     defaultValues,
   });
@@ -60,6 +61,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
     resetCheckoutToken();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = handleSubmitCard(async (formData: CardForm) => {
     setIsPaymentProcessing(true);
 
@@ -70,7 +72,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
         paymentInput: {
           gateway: DUMMY_CREDIT_CARD_GATEWAY,
           amount: checkout.totalPrice?.gross.amount,
-          token: formData.cardNumber,
+          token: "bank transfer",
         },
       },
     });
@@ -105,11 +107,11 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
   return (
     <div className="py-8">
       <form onSubmit={handleSubmit}>
-        <div className="py-8">
-          <div className="mt-4 grid grid-cols-12 gap-x-2 gap-y-4">
-            <div className="col-span-6">
+        <div className="">
+          <div className="mt-4 grid grid-cols-12 gap-x-2 gap-y-2">
+            {/* <div className="col-span-6">
               <label htmlFor="card-number" className="block text-sm font-semibold text-gray-700">
-                {t.formatMessage(messages.cardNumberField)}
+                TX
               </label>
               <div className="mt-1">
                 <input
@@ -157,7 +159,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
                   })}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <CompleteCheckoutButton isProcessing={isPaymentProcessing} isDisabled={isPaymentProcessing}>

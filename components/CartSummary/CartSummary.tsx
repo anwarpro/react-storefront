@@ -92,7 +92,9 @@ export function CartSummary({ checkout }: CartSummaryProps) {
             </div>
             <div className="pt-4 flex items-center justify-between border-t border-gray-300">
               <dt className="text-lg font-bold text-gray-900">{t.formatMessage(messages.total)}</dt>
-              <dd className="text-lg font-bold text-gray-900">{formatPrice(totalPrice?.gross)}</dd>
+              <dd className="text-lg font-bold text-gray-900 ml-4">
+                {formatPrice(totalPrice?.gross)}
+              </dd>
             </div>
           </dl>
         </div>

@@ -1,4 +1,6 @@
 import { useAuth, useAuthState } from "@saleor/sdk";
+import sideBg from "assets/login-side-shape.png";
+import bg from "assets/loginbg.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -60,16 +62,43 @@ function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-no-repeat bg-cover bg-center bg-gradient-to-r from-blue-100 to-blue-500">
-      <div className="flex justify-end">
-        <div className="bg-white min-h-screen w-1/2 flex justify-center items-center">
-          <div>
+    <div className="min-h-screen bg-no-repeat bg-cover bg-center">
+      <div
+        className="flex"
+        style={{
+          backgroundImage: `url(${bg.src})`,
+          width: "100%",
+          height: "100%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="min-h-screen w-[512px]">
+          <div
+            className="flex px-[50px] py-[50px] items-center"
+            style={{
+              backgroundImage: `url(${sideBg.src})`,
+              width: "100%",
+              height: "100%",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+            }}
+          >
+            <div className="ml-6">
+              <h1 className="text-6xl font-bold text-white">Musafir</h1>
+              <span className="text-xl text-white font-medium">Online Wholesales</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="min-h-screen px-[200px] flex flex-1 justify-center items-center">
+          <div className="w-full">
             <form onSubmit={handleLogin}>
               <div>
-                <span className="text-sm text-gray-900">
+                <span className="text-3xl text-gray-900">
                   {t.formatMessage(messages.loginWelcomeMessage)}
                 </span>
-                <h1 className="text-2xl font-bold">{t.formatMessage(messages.loginHeader)}</h1>
+                <h1 className="text-xl font-bold">{t.formatMessage(messages.loginHeader)}</h1>
               </div>
 
               <div className="my-3">
@@ -106,18 +135,20 @@ function LoginPage() {
               <div className="">
                 <button
                   type="submit"
-                  className="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100"
+                  className="mt-4 mb-3 py-3 w-full bg-green-500 hover:bg-green-400 text-white text-3xl rounded-md transition duration-100"
                 >
                   {t.formatMessage(messages.logIn)}
                 </button>
                 {!!errorsForm.email && (
-                  <p className="text-sm text-red-500 pt-2">{errorsForm.email?.message}</p>
+                  <p className="text-md text-red-500 pt-2">{errorsForm.email?.message}</p>
                 )}
               </div>
             </form>
             <p className="mt-8">
               <Link href={paths.account.register.$url()} passHref>
-                <a href="pass">{t.formatMessage(messages.createAccount)}</a>
+                <a href="pass" className="text-2xl">
+                  {t.formatMessage(messages.createAccount)}
+                </a>
               </Link>
             </p>
           </div>

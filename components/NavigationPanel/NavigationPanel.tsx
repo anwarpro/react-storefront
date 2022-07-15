@@ -14,17 +14,17 @@ export function NavigationPanel() {
   return (
     <div className="group w-full md:w-4/5 cursor-default rounded-md bg-white">
       <Link href={paths.account.preferences.$url()} passHref>
-        <a href="pass" className="text-black">
+        <a href="pass" className="text-black text-2xl">
           <span className={linkClassname}>{t.formatMessage(messages.menuAccountPreferences)}</span>
         </a>
       </Link>
       <Link href={paths.account.addressBook.$url()} passHref>
-        <a href="pass" className="text-black">
+        <a href="pass" className="text-black text-2xl">
           <span className={linkClassname}>{t.formatMessage(messages.menuAccountAddressBook)}</span>
         </a>
       </Link>
       <Link href={paths.account.orders.$url()} passHref>
-        <a href="pass" className="text-black">
+        <a href="pass" className="text-black text-2xl">
           <span className={linkClassname}>{t.formatMessage(messages.menuAccountOrders)}</span>
         </a>
       </Link>

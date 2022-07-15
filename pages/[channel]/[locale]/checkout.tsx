@@ -1,3 +1,4 @@
+import { useAuthState } from "@saleor/sdk";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect } from "react";
 
@@ -10,11 +11,18 @@ function CheckoutPage() {
   const router = useRouter();
   const paths = usePaths();
   const { checkout, loading } = useCheckout();
+  const { authenticated } = useAuthState();
 
   useEffect(() => {
     // Redirect to cart if theres no checkout data
     if (!loading && (!checkout || !checkout.lines?.length)) {
       router.push(paths.cart.$url());
+      return;
+    }
+
+    // Redirect to login page if not logged in
+    if (!loading && !authenticated) {
+      router.push(paths.account.login.$url());
     }
   });
 
