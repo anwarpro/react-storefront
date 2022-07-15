@@ -9,7 +9,7 @@ Disallow: /checkout
 Disallow: /account/*
 
 # Host
-Host: https://localhost:3001
+Host: https://musafira2z.com
 
 # Sitemaps
-Sitemap: https://localhost:3001/sitemap.xml
+Sitemap: https://musafira2z.com/sitemap.xml
