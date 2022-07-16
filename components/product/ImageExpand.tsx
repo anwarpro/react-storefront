@@ -8,6 +8,7 @@ interface ImageExpandProps {
   image?: ProductMediaFragment;
   onRemoveExpand: () => void;
 }
+
 export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
   if (!image) {
     return null;
@@ -18,7 +19,7 @@ export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
       <div
         role="button"
         tabIndex={0}
-        className="absolute grid h-6 justify-end w-full z-40 p-8 lg:px-8 mx-auto"
+        className="absolute grid h-6 justify-end w-full z-40 mt-[72px] mr-[80px]"
         onClick={() => onRemoveExpand()}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -26,7 +27,7 @@ export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {
           }
         }}
       >
-        <XIcon className="w-6 h-6" />
+        <XIcon className="w-8 h-8" />
       </div>
       <div className="w-full h-full absolute md:mt-10">
         <Image src={image.url} alt={image.alt} layout="fill" objectFit="scale-down" />
