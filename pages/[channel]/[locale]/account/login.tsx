@@ -57,7 +57,11 @@ function LoginPage() {
   });
   if (authenticated) {
     // User signed in successfully.
-    router.push(redirectURL);
+    if (router.query.next?.toString()) {
+      router.push(paths.checkout.$url());
+    } else {
+      router.push(redirectURL);
+    }
     return null;
   }
 

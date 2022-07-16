@@ -22,7 +22,7 @@ function CheckoutPage() {
 
     // Redirect to login page if not logged in
     if (!loading && !authenticated) {
-      router.push(paths.account.login.$url());
+      router.push(paths.account.login.$url({ query: { next: paths.checkout.$url().pathname } }));
     }
   });
 
