@@ -3,15 +3,21 @@ import { useRouter } from "next/router";
 import React, { ReactElement, useEffect } from "react";
 
 import { CheckoutForm, CheckoutSidebar, Layout, Spinner } from "@/components";
+import { useRegions } from "@/components/RegionsProvider";
 import { BaseSeo } from "@/components/seo/BaseSeo";
 import { usePaths } from "@/lib/paths";
 import { useCheckout } from "@/lib/providers/CheckoutProvider";
+import { useCheckoutEmailUpdateMutation } from "@/saleor/api";
 
 function CheckoutPage() {
   const router = useRouter();
   const paths = usePaths();
   const { checkout, loading } = useCheckout();
-  const { authenticated } = useAuthState();
+  const { authenticated, user } = useAuthState();
+
+  const [checkoutEmailUpdate] = useCheckoutEmailUpdateMutation({});
+
+  const { query } = useRegions();
 
   useEffect(() => {
     // Redirect to cart if theres no checkout data
@@ -23,6 +29,19 @@ function CheckoutPage() {
     // Redirect to login page if not logged in
     if (!loading && !authenticated) {
       router.push(paths.account.login.$url({ query: { next: paths.checkout.$url().pathname } }));
+      return;
+    }
+
+    if (!loading && checkout && !checkout?.email && authenticated && user) {
+      // add checkout to email
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const result = checkoutEmailUpdate({
+        variables: {
+          email: user.email,
+          token: checkout?.token,
+          locale: query.locale,
+        },
+      });
     }
   });
 
